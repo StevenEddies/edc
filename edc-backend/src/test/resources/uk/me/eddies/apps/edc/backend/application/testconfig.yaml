@@ -10,6 +10,8 @@ logging:
 users:
   - username: "steven"
     password: "test"
+  - username: "bob"
+    password: "test"
 goals:
   - name: "Meditate"
   - name: "Exercise"

@@ -2,6 +2,7 @@ package uk.me.eddies.apps.edc.backend.api.resource;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -21,6 +22,7 @@ public class UsersResource {
 	}
 	
 	@GET
+	@PermitAll
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<UserDTO> getAllUsers() {
 		return model.getAllUsers().stream()
