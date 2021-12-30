@@ -5,6 +5,14 @@ public class AchievementDTO {
 	private String goal;
 	private boolean achieved;
 	
+	public AchievementDTO() {
+	}
+	
+	public AchievementDTO(String goal, boolean achieved) {
+		this.goal = goal;
+		this.achieved = achieved;
+	}
+
 	public String getGoal() {
 		return goal;
 	}
