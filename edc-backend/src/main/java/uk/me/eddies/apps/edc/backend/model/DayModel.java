@@ -3,6 +3,7 @@ package uk.me.eddies.apps.edc.backend.model;
 import static java.util.stream.Collectors.toList;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class DayModel {
 	}
 	
 	public synchronized void update(DayDTO incomingDTO) {
-		if (incomingDTO.getDay() != null && !day.isEqual(incomingDTO.getDay())) {
+		if (incomingDTO.getDay() != null && !day.isEqual(LocalDate.parse(incomingDTO.getDay()))) {
 			throw new IllegalArgumentException("Attempted to update " + day + " but specified day was " + incomingDTO.getDay());
 		}
 		for (AchievementDTO eachIncomingAchievement : incomingDTO.getAchievements()) {
@@ -42,11 +43,11 @@ public class DayModel {
 		Collection<AchievementDTO> achievementDTOs = achievements.entrySet().stream()
 				.map(eachAchievement -> new AchievementDTO(eachAchievement.getKey().getName(), eachAchievement.getValue()))
 				.collect(toList());
-		return new DayDTO(day, achievementDTOs, computeStatus(asOf));
+		return new DayDTO(day.format(DateTimeFormatter.ISO_LOCAL_DATE), achievementDTOs, computeStatus(asOf));
 	}
 
 	private DayStatus computeStatus(LocalDate asOf) {
-		if (asOf.isAfter(day)) {
+		if (asOf.isBefore(day)) {
 			return DayStatus.NOT_DUE;
 		} else if (achievements.values().stream().allMatch(Boolean.TRUE::equals)) {
 			return DayStatus.COMPLETE;

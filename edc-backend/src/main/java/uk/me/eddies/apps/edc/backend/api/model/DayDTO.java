@@ -1,28 +1,27 @@
 package uk.me.eddies.apps.edc.backend.api.model;
 
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
 public class DayDTO {
 
-	private LocalDate day;
+	private String day;
 	private Collection<AchievementDTO> achievements;
 	private DayStatus status;
 	
 	public DayDTO() {
 	}
 	
-	public DayDTO(LocalDate day, Collection<AchievementDTO> achievements, DayStatus status) {
+	public DayDTO(String day, Collection<AchievementDTO> achievements, DayStatus status) {
 		this.day = day;
 		this.achievements = new LinkedHashSet<>(achievements);
 		this.status = status;
 	}
 
-	public LocalDate getDay() {
+	public String getDay() {
 		return day;
 	}
-	public void setDay(LocalDate day) {
+	public void setDay(String day) {
 		this.day = day;
 	}
 	public Collection<AchievementDTO> getAchievements() {
