@@ -1,0 +1,16 @@
+---
+
+version: "3.7"
+services:
+
+  backend:
+    image: edc-backend:{{uk.me.eddies:edc-backend}}
+    volumes:
+      - "./var/:/opt/edc-backend/var/"
+
+  frontend:
+    image: edc-frontend:{{uk.me.eddies:edc-frontend}}
+    ports:
+      - "80:80"
+    depends_on:
+      - "backend"

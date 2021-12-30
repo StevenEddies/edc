@@ -1,0 +1,148 @@
+plugins {
+	id 'com.palantir.docker' version '0.31.0' apply false
+	id 'com.palantir.docker-compose' version '0.31.0' apply false
+	id 'com.github.node-gradle.node' version '3.1.1' apply false
+}
+
+allprojects {
+	version = project.findProperty('buildVersion') ?: '0.0-dev.0'
+	group = 'uk.me.eddies'
+}
+
+project(':edc-backend') {
+
+	apply plugin: 'java'
+	apply plugin: 'application'
+	apply plugin: 'com.palantir.docker'
+	
+	sourceCompatibility = 17
+	targetCompatibility = 17
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.slf4j:slf4j-api:1.7.32'
+		implementation 'io.dropwizard:dropwizard-core:2.0.28'
+		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+		testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+		testImplementation 'org.hamcrest:hamcrest:2.2'
+		testImplementation 'org.awaitility:awaitility:4.1.1'
+		testImplementation 'io.dropwizard:dropwizard-testing:2.0.28'
+		testImplementation 'io.dropwizard:dropwizard-client:2.0.28'
+		testRuntimeOnly 'ch.qos.logback:logback-classic:1.2.10'
+		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+	}
+
+	tasks.withType(Test) {
+		useJUnitPlatform()
+		ignoreFailures = true
+	}
+
+	application {
+		mainClass = 'uk.me.eddies.apps.edc.backend.application.EdcBackendApplication'
+	}
+	
+	run {
+		args 'server'
+		args project.findProperty('configFile') ?: file('src/test/resources/uk/me/eddies/apps/edc/backend/application/testconfig.yaml')
+	}
+	
+	docker {
+		name "edc-backend:${version}"
+		dockerfile file('src/main/docker/Dockerfile')
+		files tasks.installDist.outputs
+	}
+	
+	dockerfileZip {
+		archiveFileName = 'edc-backend.zip'
+		destinationDirectory = file('build/docker-zip')
+	}
+}
+
+project('edc-frontend') {
+
+	apply plugin: 'com.github.node-gradle.node'
+	apply plugin: 'com.palantir.docker'
+	
+	node {
+		version = '14.17.0'
+		npmVersion = '6.14.13'
+		download = true
+	}
+	
+	task angularBuild(type: NpxTask) {
+		group = 'angular'
+		description = 'Use the Angular CLI to build the web app.'
+		command = '@angular/cli@12.0.5'
+		args = [ 'build' ]
+		inputs.files 'package.json', 'package-lock.json', 'angular.json', 'tsconfig.json', 'tsconfig.app.json'
+		inputs.dir 'src'
+		inputs.dir fileTree('node_modules').exclude('.cache')
+		outputs.dir 'build/angular'
+	}
+	
+	docker {
+		name "edc-frontend:${version}"
+		dockerfile file('docker/Dockerfile')
+		copySpec.from (tasks.angularBuild.outputs) {
+			into 'app'
+		}
+		files 'nginx/ng.conf'
+	}
+	
+	dockerfileZip {
+		archiveFileName = 'edc-frontend.zip'
+		destinationDirectory = file('build/docker-zip')
+	}
+}
+
+project('edc-deploy') {
+
+	apply plugin: 'com.palantir.docker-compose'
+	
+	dependencies {
+		docker project(path: ':edc-backend', configuration: 'docker')
+		docker project(path: ':edc-frontend', configuration: 'docker')
+	}
+	
+	task clean(type: Delete) {
+		group = 'dist'
+		description = 'Deletes the build directory.'
+		delete 'build'
+	}
+	
+	generateDockerCompose {
+		mustRunAfter clean
+	}
+	
+	task processResources(type: Copy) {
+		group = 'dist'
+		description = 'Deletes the build directory.'
+		from 'src/main/resources'
+		into 'build/dist/edc'
+		mustRunAfter clean
+	}
+	
+	dockerCompose {
+		template 'src/main/docker/docker-compose.yaml.template'
+		dockerComposeFile 'build/dist/edc/docker-compose.yaml'
+	}
+	
+	dockerComposeUp {
+		dependsOn 
+	}
+	
+	task assembleDist() {
+		group = 'dist'
+		description = 'Assembles the project.'
+		dependsOn generateDockerCompose, processResources
+	}
+	
+	dockerComposeUp {
+		dependsOn assembleDist
+		dependsOn ':edc-backend:docker'
+		dependsOn ':edc-frontend:docker'
+	}
+}

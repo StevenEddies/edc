@@ -1,0 +1,6 @@
+rootProject.name = 'edc'
+
+include 'edc-backend'
+include 'edc-frontend'
+
+include 'edc-deploy'
