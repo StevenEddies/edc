@@ -28,12 +28,14 @@ public class EdcBackendApplication extends Application<EdcBackendConfiguration> 
 		
 		environment.jersey().register(new CORSFilter());
 		
-	    environment.jersey().register(new AuthDynamicFeature(
-	            new BasicCredentialAuthFilter.Builder<User>()
-	                .setAuthenticator(new UserAuthenticator(model))
-	                .buildAuthFilter()));
-	    environment.jersey().register(RolesAllowedDynamicFeature.class);
-	    environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
+		environment.jersey().register(new AuthDynamicFeature(
+				new BasicCredentialAuthFilter.Builder<User>()
+					.setAuthenticator(new UserAuthenticator(model))
+					.buildAuthFilter()));
+		environment.jersey().register(RolesAllowedDynamicFeature.class);
+		environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
+		
+		environment.admin().addTask(new ShutdownTask());
 	}
 
 	public static void main(String[] args) throws Exception {
