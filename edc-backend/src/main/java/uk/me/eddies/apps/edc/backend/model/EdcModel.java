@@ -38,4 +38,8 @@ public class EdcModel {
 		return users.get(lookupUser(username)
 				.orElseThrow(() -> new IllegalArgumentException("Unknown user " + username)));
 	}
+	
+	public SingleUserModel lookupForUser(User user) {
+		return users.get(user);
+	}
 }

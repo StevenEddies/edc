@@ -15,4 +15,4 @@ users:
 goals:
   - name: "Meditate"
   - name: "Exercise"
-datastore: "./testdata"
+datastore: "./src/test/resources/uk/me/eddies/apps/edc/backend/application/testdata"

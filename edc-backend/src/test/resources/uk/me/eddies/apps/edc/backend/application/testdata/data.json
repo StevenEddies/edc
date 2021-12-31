@@ -1,0 +1,323 @@
+{
+  "users" : [ {
+    "userInfo" : {
+      "name" : "steven"
+    },
+    "days" : [ {
+      "day" : "2021-12-30",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : true
+      } ],
+      "status" : "PARTIALLY_COMPLETE"
+    }, {
+      "day" : "2021-12-01",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-02",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-03",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-04",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-05",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-06",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-07",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-08",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-09",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-10",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-11",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-12",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-13",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-14",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-15",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-16",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-17",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-18",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-19",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-20",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-21",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-22",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-23",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-24",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-25",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-26",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-27",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-28",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-29",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    }, {
+      "day" : "2021-12-31",
+      "achievements" : [ {
+        "goal" : "Meditate",
+        "achieved" : false
+      }, {
+        "goal" : "Exercise",
+        "achieved" : false
+      } ],
+      "status" : "INCOMPLETE"
+    } ]
+  }, {
+    "userInfo" : {
+      "name" : "bob"
+    },
+    "days" : [ ]
+  } ]
+}

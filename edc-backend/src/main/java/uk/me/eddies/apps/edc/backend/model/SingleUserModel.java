@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -26,5 +27,9 @@ public class SingleUserModel {
 				.mapToObj(i -> from.plusDays(i))
 				.map(this::lookupDay)
 				.toList();
+	}
+	
+	public synchronized Collection<DayModel> getAllKnownDays() {
+		return new LinkedHashSet<>(days.values());
 	}
 }
