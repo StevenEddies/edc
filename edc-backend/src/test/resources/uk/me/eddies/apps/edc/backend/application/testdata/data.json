@@ -1,6 +1,11 @@
 {
   "users" : [ {
     "userInfo" : {
+      "name" : "bob"
+    },
+    "days" : [ ]
+  }, {
+    "userInfo" : {
       "name" : "steven"
     },
     "days" : [ {
@@ -314,10 +319,5 @@
       } ],
       "status" : "INCOMPLETE"
     } ]
-  }, {
-    "userInfo" : {
-      "name" : "bob"
-    },
-    "days" : [ ]
   } ]
 }

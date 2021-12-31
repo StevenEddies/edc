@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import io.dropwizard.Configuration;
+import uk.me.eddies.apps.edc.backend.configuration.DatastoreConfiguration;
 import uk.me.eddies.apps.edc.backend.configuration.GoalConfiguration;
 import uk.me.eddies.apps.edc.backend.configuration.UserConfiguration;
 
@@ -23,7 +24,8 @@ public class EdcBackendConfiguration extends Configuration {
 	@NotEmpty
 	private Collection<GoalConfiguration> goals;
 	
-	private String datastore;
+	@Valid
+	private DatastoreConfiguration datastore;
 	
 	public Collection<UserConfiguration> getUsers() {
 		return users;
@@ -41,11 +43,11 @@ public class EdcBackendConfiguration extends Configuration {
 		this.goals = goals;
 	}
 	
-	public String getDatastore() {
+	public DatastoreConfiguration getDatastore() {
 		return datastore;
 	}
 	
-	public void setDatastore(String datastore) {
+	public void setDatastore(DatastoreConfiguration datastore) {
 		this.datastore = datastore;
 	}
 }
