@@ -18,10 +18,10 @@ public class UserAuthenticator implements Authenticator<BasicCredentials, User> 
 	@Override
 	public Optional<User> authenticate(BasicCredentials credentials) {
 		return model.lookupUser(credentials.getUsername())
-				.flatMap(user -> requirePassword(user, credentials.getPassword()));
+				.flatMap(user -> requirePassword(user, credentials.getPassword().toCharArray()));
 	}
 
-	private Optional<User> requirePassword(User input, String password) {
+	private Optional<User> requirePassword(User input, char[] password) {
 		return input.validatePassword(password) ? Optional.of(input) : Optional.empty();
 	}
 }

@@ -90,6 +90,7 @@ It is licensed under the Apache licence version 2.0 (see the LICENCE file alongs
  * [Angular](https://angular.io/) - [MIT license](https://github.com/angular/angular/blob/master/LICENSE).
     * Various dependencies of Angular.
  * [Angular Material](https://material.angular.io/) - [MIT license](https://github.com/angular/angular/blob/master/LICENSE).
+ * [BCrypt Java Library](https://github.com/patrickfav/bcrypt) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
  * [Docker](https://www.docker.com/) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
  * [Docker Gradle Plugin](https://github.com/palantir/gradle-docker) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
  * [Dropwizard](https://www.dropwizard.io/) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).

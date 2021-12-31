@@ -9,9 +9,9 @@ logging:
     - type: console
 users:
   - username: "steven"
-    password: "test"
+    passwordHash: "$2a$07$gOYcgZq9oVhM43eomY0oxen0Y87SOpGFArHCvzRcdtahmyqLs/C7C"
   - username: "bob"
-    password: "test"
+    passwordHash: "$2a$07$gOYcgZq9oVhM43eomY0oxen0Y87SOpGFArHCvzRcdtahmyqLs/C7C"
 goals:
   - name: "Meditate"
   - name: "Exercise"

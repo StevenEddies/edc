@@ -6,13 +6,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class UserConfiguration {
-
+	
 	@NotBlank
 	@Pattern(regexp="^[a-z0-9]+$")
 	private String username;
 	
 	@NotBlank
-	private String password;
+	private String passwordHash;
 
 	public String getUsername() {
 		return username;
@@ -22,12 +22,12 @@ public class UserConfiguration {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 
 	@Override

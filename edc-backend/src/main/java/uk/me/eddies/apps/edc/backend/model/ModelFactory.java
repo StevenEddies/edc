@@ -18,7 +18,7 @@ public class ModelFactory {
 		
 		Map<User, SingleUserModel> usersModel = users.stream()
 				.collect(toUnmodifiableMap(
-						config -> new User(config.getUsername(), config.getPassword()),
+						config -> new User(config.getUsername(), config.getPasswordHash()),
 						config -> new SingleUserModel(goalsModel)));
 		
 		return new EdcModel(goalsModel, usersModel);
