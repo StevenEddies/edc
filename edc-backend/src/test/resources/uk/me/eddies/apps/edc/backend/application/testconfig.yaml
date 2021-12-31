@@ -15,3 +15,4 @@ users:
 goals:
   - name: "Meditate"
   - name: "Exercise"
+datastore: "./testdata"

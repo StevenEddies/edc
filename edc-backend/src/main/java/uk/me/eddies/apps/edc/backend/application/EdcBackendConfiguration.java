@@ -23,6 +23,8 @@ public class EdcBackendConfiguration extends Configuration {
 	@NotEmpty
 	private Collection<GoalConfiguration> goals;
 	
+	private String datastore;
+	
 	public Collection<UserConfiguration> getUsers() {
 		return users;
 	}
@@ -37,5 +39,13 @@ public class EdcBackendConfiguration extends Configuration {
 	
 	public void setGoals(Collection<GoalConfiguration> goals) {
 		this.goals = goals;
+	}
+	
+	public String getDatastore() {
+		return datastore;
+	}
+	
+	public void setDatastore(String datastore) {
+		this.datastore = datastore;
 	}
 }

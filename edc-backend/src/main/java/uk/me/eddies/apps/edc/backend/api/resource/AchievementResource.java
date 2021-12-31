@@ -79,7 +79,7 @@ public class AchievementResource {
 		model.lookupForUser(user)
 				.lookupDay(LocalDate.of(year, month, day))
 				.update(data);
-		return Response.ok().build();
+		return Response.noContent().build();
 	}
 	
 	private LocalDate parseAsOf(String input) {

@@ -13,7 +13,7 @@ import uk.me.eddies.apps.edc.backend.api.model.DayDTO;
 import uk.me.eddies.apps.edc.backend.api.model.DayStatus;
 
 public class DayModel {
-
+	
 	private final GoalsModel goals;
 	
 	private final LocalDate day;

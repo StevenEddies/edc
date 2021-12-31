@@ -13,15 +13,21 @@ import uk.me.eddies.apps.edc.backend.api.utility.UserAuthenticator;
 import uk.me.eddies.apps.edc.backend.model.EdcModel;
 import uk.me.eddies.apps.edc.backend.model.ModelFactory;
 import uk.me.eddies.apps.edc.backend.model.User;
+import uk.me.eddies.apps.edc.backend.model.persistence.PersistenceHandler;
 
 public class EdcBackendApplication extends Application<EdcBackendConfiguration> {
 	
 	private EdcModel model;
+	private PersistenceHandler persistence;
 	
 	@Override
 	public void run(EdcBackendConfiguration configuration, Environment environment) {
 		
 		model = ModelFactory.build(configuration.getUsers(), configuration.getGoals());
+		
+		persistence = new PersistenceHandler(model, configuration.getDatastore(), environment.lifecycle().scheduledExecutorService("persistence-%d").build());
+		persistence.modelCreated();
+		environment.lifecycle().manage(persistence);
 		
 		environment.jersey().register(new UsersResource(model));
 		environment.jersey().register(new AchievementResource(model));
