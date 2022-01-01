@@ -1,0 +1,18 @@
+<nav mat-tab-nav-bar
+    backgroundColor="primary"
+    mat-align-tabs="center">
+
+  <a mat-tab-link
+      routerLink="/today"
+      routerLinkActive #todayActive="routerLinkActive"
+      [active]="todayActive.isActive">
+    Today
+  </a>
+  <a mat-tab-link
+      routerLink="/calendar"
+      routerLinkActive #calendarActive="routerLinkActive"
+      [active]="calendarActive.isActive">
+    Calendar
+  </a>
+
+</nav>
