@@ -100,7 +100,8 @@ project('edc-frontend') {
 	task angularBuild(type: NpxTask) {
 		group = 'angular'
 		description = 'Use the Angular CLI to build the web app.'
-		command = '@angular/cli@12.0.5'
+		dependsOn npmInstall
+		command = 'ng'
 		args = [ 'build' ]
 		inputs.files 'package.json', 'package-lock.json', 'angular.json', 'tsconfig.json', 'tsconfig.app.json'
 		inputs.dir 'src'
