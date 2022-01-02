@@ -32,8 +32,6 @@ public class EdcBackendApplication extends Application<EdcBackendConfiguration> 
 		environment.jersey().register(new UsersResource(model));
 		environment.jersey().register(new AchievementResource(model));
 		
-		environment.jersey().register(new CORSFilter());
-		
 		environment.jersey().register(new AuthDynamicFeature(
 				new BasicCredentialAuthFilter.Builder<User>()
 					.setAuthenticator(new UserAuthenticator(model))

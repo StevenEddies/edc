@@ -73,7 +73,8 @@
               "browserTarget": "edc-frontend:build:production"
             },
             "development": {
-              "browserTarget": "edc-frontend:build:development"
+              "browserTarget": "edc-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
