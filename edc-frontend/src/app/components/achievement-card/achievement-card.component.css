@@ -1,0 +1,14 @@
+mat-card {
+  margin: 1em auto;
+  max-width: 30em;
+}
+
+mat-icon.mat-card-avatar {
+  width: 40px;
+  height: 20px;
+  font-size: 20px;
+}
+
+mat-card-header mat-card-title {
+  margin-bottom: 0px;
+}

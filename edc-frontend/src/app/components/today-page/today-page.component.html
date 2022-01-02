@@ -1,13 +1,2 @@
 <app-today-summary-card [state]="state"></app-today-summary-card>
-<mat-card class="title-only-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="checkbox-blank-outline"></mat-icon>
-    <mat-card-title>Meditate</mat-card-title>
-  </mat-card-header>
-</mat-card>
-<mat-card class="title-only-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="checkbox-marked-outline" color="accent"></mat-icon>
-    <mat-card-title>Meditate</mat-card-title>
-  </mat-card-header>
-</mat-card>
+<app-achievement-card *ngFor="let achievement of state.achievements" [achievement]="achievement"></app-achievement-card>
