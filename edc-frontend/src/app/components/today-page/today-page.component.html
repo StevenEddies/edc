@@ -1,2 +1,2 @@
 <app-today-summary-card [state]="state"></app-today-summary-card>
-<app-achievement-card *ngFor="let achievement of state.achievements" [achievement]="achievement" (toggleAchieved)="toggle($event)"></app-achievement-card>
+<app-achievement-card *ngFor="let achievement of state?.achievements" [achievement]="achievement" (toggleAchieved)="toggle($event)"></app-achievement-card>
