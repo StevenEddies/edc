@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-today-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./today-page.component.css']
 })
 export class TodayPageComponent implements OnInit {
+
+  today = new Date();
 
   constructor() { }
 
