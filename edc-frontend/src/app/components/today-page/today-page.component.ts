@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { Day, DayStatus } from '../../model/day';
+import { Day, DayStatus, Achievement } from '../../model/day';
 
 @Component({
   selector: 'app-today-page',
@@ -22,5 +22,9 @@ export class TodayPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  toggle(achievement: Achievement): void {
+    achievement.achieved = !achievement.achieved;
   }
 }

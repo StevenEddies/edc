@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Achievement } from '../../model/day';
 
 @Component({
@@ -9,6 +9,7 @@ import { Achievement } from '../../model/day';
 export class AchievementCardComponent implements OnInit {
 
   @Input() achievement: Achievement | null = null;
+  @Output() toggleAchieved = new EventEmitter<Achievement>();
 
   constructor() { }
 
@@ -25,5 +26,11 @@ export class AchievementCardComponent implements OnInit {
     return this.achievement?.achieved
         ? "accent"
         : "";
+  }
+  
+  click(): void {
+    if (this.achievement != null) {
+      this.toggleAchieved.emit(this.achievement!);
+    }
   }
 }
