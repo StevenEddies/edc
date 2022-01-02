@@ -33,6 +33,7 @@ export class DayService {
   }
 
   getState(): Observable<Day | null> {
+    this.updated.next();
     return this.state;
   }
 
