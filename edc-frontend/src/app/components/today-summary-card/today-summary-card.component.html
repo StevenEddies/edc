@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar [svgIcon]="icon()" [color]="colour()"></mat-icon>
+    <mat-card-title>{{ title() }}</mat-card-title>
+    <mat-card-subtitle>{{state?.day | date:'d MMM yyyy'}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

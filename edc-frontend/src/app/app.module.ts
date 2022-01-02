@@ -13,13 +13,15 @@ import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.compone
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TodaySummaryCardComponent } from './components/today-summary-card/today-summary-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodayPageComponent,
     NavTabBarComponent,
-    CalendarPageComponent
+    CalendarPageComponent,
+    TodaySummaryCardComponent
   ],
   imports: [
     BrowserModule,

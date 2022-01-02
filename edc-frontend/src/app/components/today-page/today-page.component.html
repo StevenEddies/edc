@@ -1,31 +1,4 @@
-<mat-card class="title-subtitle-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="timer-sand-empty"></mat-icon>
-    <mat-card-title>Future Day</mat-card-title>
-    <mat-card-subtitle>{{today | date:'d MMM yyyy'}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
-<mat-card class="title-subtitle-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="circle-outline" color="warn"></mat-icon>
-    <mat-card-title>Not Started</mat-card-title>
-    <mat-card-subtitle>{{today | date:'d MMM yyyy'}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
-<mat-card class="title-subtitle-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="circle-slice-5" color="warn"></mat-icon>
-    <mat-card-title>Partially Complete</mat-card-title>
-    <mat-card-subtitle>{{today | date:'d MMM yyyy'}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
-<mat-card class="title-subtitle-card">
-  <mat-card-header>
-    <mat-icon mat-card-avatar svgIcon="check-circle-outline" color="accent"></mat-icon>
-    <mat-card-title>Complete</mat-card-title>
-    <mat-card-subtitle>{{today | date:'d MMM yyyy'}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<app-today-summary-card [state]="state"></app-today-summary-card>
 <mat-card class="title-only-card">
   <mat-card-header>
     <mat-icon mat-card-avatar svgIcon="checkbox-blank-outline"></mat-icon>
