@@ -1,1 +1,3 @@
 ---
+datastore:
+  folder: "/opt/edc-backend/var/data/"
