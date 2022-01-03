@@ -3,7 +3,6 @@ package uk.me.eddies.apps.edc.backend.api.resource;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +15,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -38,11 +36,11 @@ public class AchievementResource {
 	@Path("/{year}/")
 	@PermitAll
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<DayDTO> getForYear(@PathParam("user") String user, @PathParam("year") int year, @QueryParam("as-of") String asOf) {
+	public List<DayDTO> getForYear(@PathParam("user") String user, @PathParam("year") int year) {
 		Year date = Year.of(year);
 		return model.lookupForUser(user)
 				.lookupRange(date.atMonth(1).atDay(1), date.atMonth(12).atEndOfMonth()).stream()
-				.map(eachDay -> eachDay.toDTO(parseAsOf(asOf)))
+				.map(eachDay -> eachDay.toDTO())
 				.toList();
 	}
 	
@@ -50,11 +48,11 @@ public class AchievementResource {
 	@Path("/{year}/{month}/")
 	@PermitAll
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<DayDTO> getForMonth(@PathParam("user") String user, @PathParam("year") int year, @PathParam("month") int month, @QueryParam("as-of") String asOf) {
+	public List<DayDTO> getForMonth(@PathParam("user") String user, @PathParam("year") int year, @PathParam("month") int month) {
 		YearMonth date = YearMonth.of(year, month);
 		return model.lookupForUser(user)
 				.lookupRange(date.atDay(1), date.atEndOfMonth()).stream()
-				.map(eachDay -> eachDay.toDTO(parseAsOf(asOf)))
+				.map(eachDay -> eachDay.toDTO())
 				.toList();
 	}
 	
@@ -62,10 +60,10 @@ public class AchievementResource {
 	@Path("/{year}/{month}/{day}/")
 	@PermitAll
 	@Produces(MediaType.APPLICATION_JSON)
-	public DayDTO getForDay(@PathParam("user") String user, @PathParam("year") int year, @PathParam("month") int month, @PathParam("day") int day, @QueryParam("as-of") String asOf) {
+	public DayDTO getForDay(@PathParam("user") String user, @PathParam("year") int year, @PathParam("month") int month, @PathParam("day") int day) {
 		return model.lookupForUser(user)
 				.lookupDay(LocalDate.of(year, month, day))
-				.toDTO(parseAsOf(asOf));
+				.toDTO();
 	}
 	
 	@PUT
@@ -80,13 +78,5 @@ public class AchievementResource {
 				.lookupDay(LocalDate.of(year, month, day))
 				.update(data);
 		return Response.noContent().build();
-	}
-	
-	private LocalDate parseAsOf(String input) {
-		if (input == null) {
-			return LocalDate.now(ZoneOffset.UTC);
-		} else {
-			return LocalDate.parse(input);
-		}
 	}
 }

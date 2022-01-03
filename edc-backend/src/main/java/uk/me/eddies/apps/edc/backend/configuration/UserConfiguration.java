@@ -13,6 +13,8 @@ public class UserConfiguration {
 	
 	@NotBlank
 	private String passwordHash;
+	
+	private String timezone;
 
 	public String getUsername() {
 		return username;
@@ -28,6 +30,14 @@ public class UserConfiguration {
 
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
+	}
+
+	public String getTimezone() {
+		return timezone;
+	}
+
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
 	}
 
 	@Override

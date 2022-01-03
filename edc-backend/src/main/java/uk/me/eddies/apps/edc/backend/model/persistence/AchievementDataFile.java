@@ -89,30 +89,29 @@ public class AchievementDataFile {
 	
 	public void save() {
 		LOG.info("Persisting data to: {}", dataFile);
-		LocalDate now = LocalDate.now();
 		try {
 			dataFile.getParentFile().mkdirs();
-			json.writeValue(dataFile, determineDataToSave(now));
+			json.writeValue(dataFile, determineDataToSave());
 			LOG.info("Persisting complete.");
 		} catch (IOException e) {
 			LOG.error("Failed to persist data.", e);
 		}
 	}
 
-	private AllUsersDTO determineDataToSave(LocalDate now) {
+	private AllUsersDTO determineDataToSave() {
 		return new AllUsersDTO(
 				model.getAllUsers().stream()
-				.map(eachUser -> determineOutputUser(now, eachUser))
+				.map(eachUser -> determineOutputUser(eachUser))
 				.toList());
 	}
 
-	private FullUserDTO determineOutputUser(LocalDate now, User eachUser) {
-		return new FullUserDTO(eachUser.toDTO(), determineOutputDays(now, model.lookupForUser(eachUser)));
+	private FullUserDTO determineOutputUser(User eachUser) {
+		return new FullUserDTO(eachUser.toDTO(), determineOutputDays(model.lookupForUser(eachUser)));
 	}
 
-	private List<DayDTO> determineOutputDays(LocalDate now, SingleUserModel userModel) {
+	private List<DayDTO> determineOutputDays(SingleUserModel userModel) {
 		return userModel.getAllKnownDays().stream()
-				.map(eachDayModel -> eachDayModel.toDTO(now))
+				.map(eachDayModel -> eachDayModel.toDTO())
 				.toList();
 	}
 }

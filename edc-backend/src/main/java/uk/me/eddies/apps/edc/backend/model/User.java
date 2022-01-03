@@ -1,6 +1,8 @@
 package uk.me.eddies.apps.edc.backend.model;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import uk.me.eddies.apps.edc.backend.api.model.UserDTO;
@@ -9,10 +11,12 @@ public class User implements Principal {
 
 	private final String username;
 	private final String passwordHash;
+	private final ZoneId timezone;
 	
-	public User(String username, String passwordHash) {
+	public User(String username, String passwordHash, ZoneId timezone) {
 		this.username = username;
 		this.passwordHash = passwordHash;
+		this.timezone = timezone;
 	}
 	
 	public String getUsername() {
@@ -25,6 +29,10 @@ public class User implements Principal {
 	
 	public UserDTO toDTO() {
 		return new UserDTO(username);
+	}
+	
+	public LocalDate userNow() {
+		return LocalDate.now(timezone);
 	}
 
 	@Override

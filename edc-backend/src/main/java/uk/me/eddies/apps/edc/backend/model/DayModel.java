@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import uk.me.eddies.apps.edc.backend.api.model.AchievementDTO;
 import uk.me.eddies.apps.edc.backend.api.model.DayDTO;
@@ -18,11 +19,13 @@ public class DayModel {
 	
 	private final LocalDate day;
 	private final Map<Goal, Boolean> achievements;
+	private final Supplier<LocalDate> now;
 
-	public DayModel(GoalsModel goals, LocalDate day) {
+	public DayModel(GoalsModel goals, LocalDate day, Supplier<LocalDate> now) {
 		this.goals = goals;
 		this.day = day;
 		this.achievements = new LinkedHashMap<>();
+		this.now = now;
 
 		goals.getAllGoals().values()
 				.forEach(eachGoal -> achievements.put(eachGoal, false));
@@ -39,15 +42,15 @@ public class DayModel {
 		}
 	}
 
-	public synchronized DayDTO toDTO(LocalDate asOf) {
+	public synchronized DayDTO toDTO() {
 		Collection<AchievementDTO> achievementDTOs = achievements.entrySet().stream()
 				.map(eachAchievement -> new AchievementDTO(eachAchievement.getKey().getName(), eachAchievement.getValue()))
 				.collect(toList());
-		return new DayDTO(day.format(DateTimeFormatter.ISO_LOCAL_DATE), achievementDTOs, computeStatus(asOf));
+		return new DayDTO(day.format(DateTimeFormatter.ISO_LOCAL_DATE), achievementDTOs, computeStatus());
 	}
 
-	private DayStatus computeStatus(LocalDate asOf) {
-		if (asOf.isBefore(day)) {
+	private DayStatus computeStatus() {
+		if (now.get().isBefore(day)) {
 			return DayStatus.NOT_DUE;
 		} else if (achievements.values().stream().allMatch(Boolean.TRUE::equals)) {
 			return DayStatus.COMPLETE;
