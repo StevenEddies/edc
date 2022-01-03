@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TodayPageComponent } from './components/today-page/today-page.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
@@ -15,6 +16,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TodaySummaryCardComponent } from './components/today-summary-card/today-summary-card.component';
 import { AchievementCardComponent } from './components/achievement-card/achievement-card.component';
+import { StreakPageComponent } from './components/streak-page/streak-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AchievementCardComponent } from './components/achievement-card/achievem
     NavTabBarComponent,
     CalendarPageComponent,
     TodaySummaryCardComponent,
-    AchievementCardComponent
+    AchievementCardComponent,
+    StreakPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { AchievementCardComponent } from './components/achievement-card/achievem
     HttpClientModule,
     MatTabsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

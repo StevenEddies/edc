@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-progress-spinner mat-card-avatar mode="determinate" [value]="currentStreakProgress()" [color]="currentStreakColour()" diameter="40"></mat-progress-spinner>
+    <mat-card-title>{{ state?.currentStreak }} days</mat-card-title>
+    <mat-card-subtitle>Current streak</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-progress-spinner mat-card-avatar mode="determinate" value="100" [color]="longestStreakColour()" diameter="40"></mat-progress-spinner>
+    <mat-card-title>{{ state?.longestStreak }} days</mat-card-title>
+    <mat-card-subtitle>Longest streak</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

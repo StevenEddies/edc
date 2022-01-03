@@ -9,6 +9,12 @@
     TODAY
   </a>
   <a mat-tab-link
+      routerLink="/streak"
+      routerLinkActive #streakActive="routerLinkActive"
+      [active]="streakActive.isActive">
+    STREAK
+  </a>
+  <a mat-tab-link
       routerLink="/calendar"
       routerLinkActive #calendarActive="routerLinkActive"
       [active]="calendarActive.isActive">

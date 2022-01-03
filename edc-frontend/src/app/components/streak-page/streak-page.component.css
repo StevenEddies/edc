@@ -1,0 +1,8 @@
+mat-card {
+  margin: 1em auto;
+  max-width: 30em;
+}
+
+mat-card-subtitle {
+  margin-bottom: 0px;
+}
