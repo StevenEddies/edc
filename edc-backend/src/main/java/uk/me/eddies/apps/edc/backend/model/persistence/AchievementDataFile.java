@@ -79,7 +79,7 @@ public class AchievementDataFile {
 
 	private void loadUserDay(String inputUsername, SingleUserModel userModel, DayDTO inputDay) {
 		try {
-			userModel.lookupDay(LocalDate.parse(inputDay.getDay())).update(inputDay);
+			userModel.update(LocalDate.parse(inputDay.getDay()), inputDay);
 		} catch (DateTimeParseException e) {
 			LOG.error("Persisted data contains invalid date {}, whose data couldn't be loaded.", inputDay.getDay());
 		} catch (RuntimeException e) {

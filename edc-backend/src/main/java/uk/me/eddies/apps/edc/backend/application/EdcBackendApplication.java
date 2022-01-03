@@ -8,6 +8,7 @@ import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.setup.Environment;
 import uk.me.eddies.apps.edc.backend.api.resource.AchievementResource;
+import uk.me.eddies.apps.edc.backend.api.resource.StreakResource;
 import uk.me.eddies.apps.edc.backend.api.resource.UsersResource;
 import uk.me.eddies.apps.edc.backend.api.utility.UserAuthenticator;
 import uk.me.eddies.apps.edc.backend.model.EdcModel;
@@ -31,6 +32,7 @@ public class EdcBackendApplication extends Application<EdcBackendConfiguration> 
 		
 		environment.jersey().register(new UsersResource(model));
 		environment.jersey().register(new AchievementResource(model));
+		environment.jersey().register(new StreakResource(model));
 		
 		environment.jersey().register(new AuthDynamicFeature(
 				new BasicCredentialAuthFilter.Builder<User>()

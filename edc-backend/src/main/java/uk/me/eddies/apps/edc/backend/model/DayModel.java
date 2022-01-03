@@ -31,7 +31,7 @@ public class DayModel {
 				.forEach(eachGoal -> achievements.put(eachGoal, false));
 	}
 	
-	public synchronized void update(DayDTO incomingDTO) {
+	synchronized void update(DayDTO incomingDTO) {
 		if (incomingDTO.getDay() != null && !day.isEqual(LocalDate.parse(incomingDTO.getDay()))) {
 			throw new IllegalArgumentException("Attempted to update " + day + " but specified day was " + incomingDTO.getDay());
 		}
@@ -40,6 +40,10 @@ public class DayModel {
 					.orElseThrow(() -> new IllegalArgumentException("Unrecognised goal: " + eachIncomingAchievement.getGoal()));
 			achievements.put(goal, eachIncomingAchievement.isAchieved());
 		}
+	}
+	
+	public synchronized boolean isAchieved() {
+		return computeStatus().equals(DayStatus.COMPLETE);
 	}
 
 	public synchronized DayDTO toDTO() {

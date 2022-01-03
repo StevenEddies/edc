@@ -74,9 +74,7 @@ public class AchievementResource {
 		if (!Objects.equals(model.lookupUser(user), requestingUser)) {
 			throw new ForbiddenException("A user can only modify their own data.");
 		}
-		model.lookupForUser(user)
-				.lookupDay(LocalDate.of(year, month, day))
-				.update(data);
+		model.lookupForUser(user).update(LocalDate.of(year, month, day), data);
 		return Response.noContent().build();
 	}
 }
