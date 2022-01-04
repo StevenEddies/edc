@@ -9,6 +9,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 import { TodayPageComponent } from './components/today-page/today-page.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
@@ -36,7 +37,8 @@ import { StreakPageComponent } from './components/streak-page/streak-page.compon
     MatTabsModule,
     MatCardModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

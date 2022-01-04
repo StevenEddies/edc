@@ -1,1 +1,22 @@
-<p>calendar-page works!</p>
+<mat-card>
+  <table>
+    <tr *ngFor="let month of state?.allMonths()">
+      <th>{{ month.name | uppercase }}</th>
+      <td *ngFor="let day of month.allDays()">
+        <button mat-button
+            *ngIf="!day.today"
+            [disabled]="day.status == DayStatus.NotDue"
+            [color]="day.status == DayStatus.Complete ? 'accent' : 'warn'">
+          {{ day.num }}
+        </button>
+        <a routerLink="/today" *ngIf="day.today">
+        <button mat-flat-button
+            *ngIf="day.today"
+            [color]="day.status == DayStatus.Complete ? 'accent' : 'primary'">
+          {{ day.num }}
+        </button>
+        </a>
+      </td>
+    </tr>
+  </table>
+</mat-card>
