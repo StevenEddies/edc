@@ -111,5 +111,6 @@ It was inspired by (but is not affiliated with) the Every Day Calendar by Simone
  * [Gradle](https://gradle.org/) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
  * [Gradle Plugin for Node](https://github.com/node-gradle/gradle-node-plugin) - [Apache License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
  * [Java](https://openjdk.java.net/) - [GNU General Public License, version 2, with the Classpath Exception](https://openjdk.java.net/legal/gplv2+ce.html).
+ * [Material Design Icons](https://materialdesignicons.com/) - [Pictogrammers Free License](https://github.com/Templarian/MaterialDesign/blob/master/LICENSE).
  * [slf4j](http://www.slf4j.org) - [MIT license](http://www.slf4j.org/license.html).
  * Various test libraries and tools which are not distributed to end-users: please see `build.gradle` for details.
