@@ -1,6 +1,7 @@
 mat-card {
   margin: 1em auto;
   max-width: 66em;
+  overflow-x: auto;
 }
 
 td .mat-button, td .mat-flat-button {
