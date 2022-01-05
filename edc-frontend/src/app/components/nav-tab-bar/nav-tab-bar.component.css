@@ -1,3 +1,17 @@
+mat-toolbar {
+  overflow-x: auto;
+}
+
+nav {
+  align-self: flex-end;
+  flex-grow: 1;
+}
+
 a.mat-tab-label-active {
   opacity: 1;
+}
+
+.mat-button {
+  min-width: 36px;
+  padding: 0px;
 }

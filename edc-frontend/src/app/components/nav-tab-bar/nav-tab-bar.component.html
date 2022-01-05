@@ -1,24 +1,35 @@
-<nav mat-tab-nav-bar
-    backgroundColor="primary"
-    mat-align-tabs="center">
-
-  <a mat-tab-link
-      routerLink="/today"
-      routerLinkActive #todayActive="routerLinkActive"
-      [active]="todayActive.isActive">
-    TODAY
+<mat-toolbar color="primary">
+  
+  <a mat-button aria-label="EDC icon" href="https://github.com/StevenEddies/edc" target="_blank">
+    <mat-icon svgIcon="calendar-multiple-check"></mat-icon>
   </a>
-  <a mat-tab-link
-      routerLink="/streak"
-      routerLinkActive #streakActive="routerLinkActive"
-      [active]="streakActive.isActive">
-    STREAK
-  </a>
-  <a mat-tab-link
-      routerLink="/calendar"
-      routerLinkActive #calendarActive="routerLinkActive"
-      [active]="calendarActive.isActive">
-    CALENDAR
-  </a>
-
-</nav>
+  
+  <nav mat-tab-nav-bar
+      backgroundColor="primary"
+      mat-align-tabs="center">
+      
+    <a mat-tab-link
+        routerLink="/today"
+        routerLinkActive #todayActive="routerLinkActive"
+        [active]="todayActive.isActive">
+      TODAY
+    </a>
+    <a mat-tab-link
+        routerLink="/streak"
+        routerLinkActive #streakActive="routerLinkActive"
+        [active]="streakActive.isActive">
+      STREAK
+    </a>
+    <a mat-tab-link
+        routerLink="/calendar"
+        routerLinkActive #calendarActive="routerLinkActive"
+        [active]="calendarActive.isActive">
+      CALENDAR
+    </a>
+  </nav>
+  
+  <button mat-button aria-label="Logout">
+    <mat-icon svgIcon="logout"></mat-icon>
+  </button>
+  
+</mat-toolbar>

@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodayPageComponent } from './components/today-page/today-page.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
@@ -46,6 +47,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatToolbarModule,
     ReactiveFormsModule
   ],
   providers: [],
