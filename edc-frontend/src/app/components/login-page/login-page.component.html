@@ -1,0 +1,15 @@
+<form [formGroup]="loginForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="bob" formControlName="username" />
+    <mat-error *ngIf="loginForm.controls.username.invalid">Required, lowercase alphanumeric only</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" formControlName="password" />
+    <mat-error *ngIf="loginForm.controls.password.invalid">Required, at least 8 characters</mat-error>
+  </mat-form-field>
+  <div class="button-panel">
+    <button mat-stroked-button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </div>
+</form>

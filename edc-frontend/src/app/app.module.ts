@@ -10,6 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TodayPageComponent } from './components/today-page/today-page.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
@@ -18,6 +21,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TodaySummaryCardComponent } from './components/today-summary-card/today-summary-card.component';
 import { AchievementCardComponent } from './components/achievement-card/achievement-card.component';
 import { StreakPageComponent } from './components/streak-page/streak-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { StreakPageComponent } from './components/streak-page/streak-page.compon
     CalendarPageComponent,
     TodaySummaryCardComponent,
     AchievementCardComponent,
-    StreakPageComponent
+    StreakPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import { StreakPageComponent } from './components/streak-page/streak-page.compon
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,9 +28,9 @@ Run `nano ./edc-deploy/src/main/resources/var/config.yaml` to edit the configura
     ---
     users:
       - username: "steven"
-        passwordHash: "$2a$07$gOYcgZq9oVhM43eomY0oxen0Y87SOpGFArHCvzRcdtahmyqLs/C7C"
+        passwordHash: "$2a$07$S6DuSWce4CbGCVhoyTTJH.RlS36u4tBCOaUDwVKR3B3wjEKW36dUK"
       - username: "bob"
-        passwordHash: "$2a$07$gOYcgZq9oVhM43eomY0oxen0Y87SOpGFArHCvzRcdtahmyqLs/C7C"
+        passwordHash: "$2a$07$pT0wuasDR7F0NUmRhy3jk..RFFMYDoSiyNJKmuBAWV93Q9lj/PWKy"
     goals:
       - name: "Something I want to do every day"
       - name: "Something else I want to do every day"
@@ -39,7 +39,7 @@ Run `nano ./edc-deploy/src/main/resources/var/config.yaml` to edit the configura
 
  * Note that it's YAML, so make sure you're using spaces rather than tabs.
  * User names should be lowercase alphanumeric only.
- * Password hashes should be bcrypt. Obviously, make sure each user has their own password.
+ * Password hashes should be bcrypt. Passwords should be at least 8 characters.
  * The datastore location above is part of the mounted docker volume. Assuming you haven't modified `docker-compose.yaml.template`, this will correspond to `./edc-deploy/build/dist/edc/var/data/` on the host system.
 
 
