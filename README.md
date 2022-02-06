@@ -72,6 +72,9 @@ The backend is Java using the Dropwizard framework. The frontend is Typescript, 
 
  * SCM repository: https://github.com/StevenEddies/edc
  * Issue tracker: https://github.com/StevenEddies/edc/issues
+ * Docker repositories:
+    * Backend: https://hub.docker.com/repository/docker/steveneddies/edc-backend
+    * Frontend: https://hub.docker.com/repository/docker/steveneddies/edc-frontend
 
 
 ### Building
@@ -85,6 +88,11 @@ To get started:
  3. Clone this repository into Eclipse.
  4. Import the project into an Eclipse workspace.
  5. Use the `:edc-backend:run` Gradle task to run the backend; and `ng serve` from a terminal (working directory `edc-frontend`) to run the frontend locally.
+
+
+### Publishing
+
+Run `./gradlew dockerPush -PbuildVersion=0.1-dev.X`, replacing X with the build number.
 
 
 ### Version Conventions

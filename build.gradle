@@ -1,11 +1,12 @@
 plugins {
-	id 'com.palantir.docker' version '0.31.0' apply false
-	id 'com.palantir.docker-compose' version '0.31.0' apply false
+	id 'com.palantir.docker' version '0.32.0' apply false
+	id 'com.palantir.docker-compose' version '0.32.0' apply false
 	id 'com.github.node-gradle.node' version '3.1.1' apply false
 }
 
 allprojects {
 	version = project.findProperty('buildVersion') ?: '0.0-dev.0'
+	minorVersion = (version =~ /^(.*)\.\d+$/)[0][1]
 	group = 'uk.me.eddies'
 }
 
@@ -52,9 +53,11 @@ project(':edc-backend') {
 	}
 	
 	docker {
-		name "edc-backend:${version}"
+		name "steveneddies/edc-backend:${version}"
+		tag minorVersion, "steveneddies/edc-backend:${minorVersion}"
 		dockerfile file('src/main/docker/Dockerfile')
 		files tasks.installDist.outputs
+		pull true
 	}
 	
 	dockerfileZip {
@@ -110,12 +113,14 @@ project('edc-frontend') {
 	}
 	
 	docker {
-		name "edc-frontend:${version}"
+		name "steveneddies/edc-frontend:${version}"
+		tag minorVersion, "steveneddies/edc-frontend:${minorVersion}"
 		dockerfile file('docker/Dockerfile')
 		copySpec.from (tasks.angularBuild.outputs) {
 			into 'app'
 		}
 		files 'nginx/ng.conf'
+		pull true
 	}
 	
 	dockerfileZip {

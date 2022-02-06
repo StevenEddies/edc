@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM nginx:1.21.5
+FROM nginx:1.21
 
 COPY app /usr/share/nginx/html
 
