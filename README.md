@@ -95,7 +95,10 @@ To get started:
 
 ### Publishing
 
-Run `./gradlew dockerPush -PbuildVersion=0.1-dev.X`, replacing X with the build number.
+ * Ensure all changes are committed and pushed to the Github repository.
+ * Run `./gradlew release -PbuildVersion=0.1-dev.X`, replacing X with the build number.
+ * Wait for the Gradle build to run.
+ * Publish the release from within the Github UI, including describing the changes.
 
 
 ### Version Conventions
