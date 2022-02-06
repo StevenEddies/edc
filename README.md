@@ -2,6 +2,8 @@
 
 Self-hosted web app to help you build good habits by doing things every day. Inspired by the [Every Day Calendar](https://www.simonegiertz.com/every-day-calendar).
 
+![Screenshot of EDC](screenshot.png)
+
 
 
 ## Usage
@@ -56,7 +58,9 @@ TCP port 80 needs to be internet-accessible (or ideally, forwarded from a revers
 
 ### Contributing
 
-I'm not currently looking for development collaborators. If you would like to suggest a feature or report a bug, please use the [issue tracker](https://github.com/StevenEddies/edc/issues).
+If you'd like to suggest a feature or report a bug, please use the [issue tracker](https://github.com/StevenEddies/edc/issues).
+
+I'm not currently *looking* for development collaborators, but do get in touch (see below) if you're interested.
 
 
 ### Technology
