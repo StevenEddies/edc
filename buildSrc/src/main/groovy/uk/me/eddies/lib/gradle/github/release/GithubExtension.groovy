@@ -12,7 +12,6 @@ class GithubExtension {
     String token
 
     String tagName
-    String targetCommitish = "master"
     String name
     String body
 
@@ -45,10 +44,6 @@ class GithubExtension {
         return tagName
     }
 
-    String getTargetCommitish() {
-        return targetCommitish
-    }
-
     String getName() {
         return name
     }
@@ -78,7 +73,7 @@ class GithubExtension {
     }
 
     void setOwner(String owner) {
-        if (owner == null || owner.isEmpty()) {
+        if (owner == null) {
             throw new IllegalArgumentException("owner")
         }
 
@@ -86,7 +81,7 @@ class GithubExtension {
     }
 
     void setRepo(String repo) {
-        if (repo == null || repo.isEmpty()) {
+        if (repo == null) {
             throw new IllegalArgumentException("repo")
         }
 
@@ -94,7 +89,7 @@ class GithubExtension {
     }
 
     void setToken(String token) {
-        if (token == null || token.isEmpty()) {
+        if (token == null) {
             throw new IllegalArgumentException("token")
         }
 
@@ -103,10 +98,6 @@ class GithubExtension {
 
     void setTagName(String tagName) {
         this.tagName = tagName
-    }
-
-    void setTargetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish
     }
 
     void setName(String name) {

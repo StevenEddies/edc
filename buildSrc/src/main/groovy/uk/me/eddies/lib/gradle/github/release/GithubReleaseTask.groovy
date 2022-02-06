@@ -11,27 +11,26 @@ import org.gradle.api.tasks.Internal
 
 class GithubReleaseTask extends DefaultTask {
 
-    @Internal
-    final String HEADER_USER_AGENT = 'gradle-github-plugin'
+    static final String HEADER_USER_AGENT = 'gradle-github-plugin'
 
     @TaskAction
-    public release() {
-        def baseUrl = project.github.getBaseUrl()
-        def accept = project.github.getAcceptHeader()
+    public void release() {
+        def baseUrl = project.githubRelease.getBaseUrl()
+        def accept = project.githubRelease.getAcceptHeader()
         
         def http = new JsonHttpBuilder(baseUrl)
 
         def path = "/repos/" +
-                "${project.github.owner}/" +
-                "${project.github.repo}/releases"
+                "${project.githubRelease.owner}/" +
+                "${project.githubRelease.repo}/releases"
 
         def postBody = [
-                tag_name        : project.github.getTagName(),
-                target_commitish: project.github.getTargetCommitish(),
-                name            : project.github.getName(),
-                body            : project.github.getBody(),
-                prerelease      : project.github.isPrerelease(),
-                draft           : project.github.isDraft()
+                tag_name        : project.githubRelease.getTagName(),
+                target_commitish: findGitRevision(),
+                name            : project.githubRelease.getName(),
+                body            : project.githubRelease.getBody(),
+                prerelease      : project.githubRelease.isPrerelease(),
+                draft           : project.githubRelease.isDraft()
         ]
 
         http.request(Method.POST) {
@@ -40,7 +39,7 @@ class GithubReleaseTask extends DefaultTask {
             body = postBody
 
             headers.'User-Agent' = HEADER_USER_AGENT
-            headers.'Authorization' = "token ${project.github.token}"
+            headers.'Authorization' = "token ${project.githubRelease.token}"
             headers.'Accept' = accept
 
             def postLogMessage = "POST ${uri.path}\n" +
@@ -53,8 +52,8 @@ class GithubReleaseTask extends DefaultTask {
             response.success = { resp, json ->
                 logger.debug "< $resp.statusLine"
                 logger.debug 'Response headers: \n' + resp.headers.collect { "< $it" }.join('\n')
-                if (project.github.assets != null) {
-                    postAssets(json.upload_url, project.github.assets, accept)
+                if (project.githubRelease.assets != null) {
+                    postAssets(json.upload_url, project.githubRelease.assets, accept)
                 }
             }
 
@@ -69,7 +68,7 @@ class GithubReleaseTask extends DefaultTask {
         }
     }
 
-    public postAssets(uploadUrl, assets, accept) {
+    void postAssets(uploadUrl, assets, accept) {
         assets.each { asset ->
             def file = new File(asset as String)
             def name = asset.split('/')[-1]
@@ -97,7 +96,7 @@ class GithubReleaseTask extends DefaultTask {
                     send ContentType.BINARY, file.bytes
 
                     headers.'User-Agent' = HEADER_USER_AGENT
-                    headers.'Authorization' = "token ${project.github.token}"
+                    headers.'Authorization' = "token ${project.githubRelease.token}"
                     headers.'Accept' = accept
                     headers.'Content-Type' = contentType
 
@@ -111,6 +110,14 @@ class GithubReleaseTask extends DefaultTask {
                 }
             }
         }
+    }
+    
+    String findGitRevision() {
+        def sout = new StringBuilder(), serr = new StringBuilder()
+        def process = 'git rev-parse HEAD'.execute()
+        process.consumeProcessOutput(sout, serr)
+        process.waitForOrKill(1000)
+        return sout.toString().trim()
     }
 }
 
