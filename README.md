@@ -70,7 +70,7 @@ The backend is Java using the Dropwizard framework. The frontend is Typescript, 
 
 ### Links
 
- * Master SCM repository: https://github.com/StevenEddies/edc
+ * SCM repository: https://github.com/StevenEddies/edc
  * Issue tracker: https://github.com/StevenEddies/edc/issues
 
 
@@ -85,6 +85,12 @@ To get started:
  3. Clone this repository into Eclipse.
  4. Import the project into an Eclipse workspace.
  5. Use the `:edc-backend:run` Gradle task to run the backend; and `ng serve` from a terminal (working directory `edc-frontend`) to run the frontend locally.
+
+
+### Version Conventions
+
+ * Release versions use the form *major*.*minor*.*build* and the SCM branch is named *major*.*minor*
+ * Development versions use the form *major*.*minor*-dev.*build* and the SCM branch is named dev*major*.*minor*
 
 
 
