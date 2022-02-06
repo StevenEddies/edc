@@ -100,7 +100,7 @@ project('edc-frontend') {
 		download = true
 	}
 	
-	task angularBuild(type: NpxTask) {
+	tasks.register('angularBuild', NpxTask) {
 		group = 'angular'
 		description = 'Use the Angular CLI to build the web app.'
 		dependsOn npmInstall
@@ -138,7 +138,7 @@ project('edc-deploy') {
 		docker project(path: ':edc-frontend', configuration: 'docker')
 	}
 	
-	task clean(type: Delete) {
+	tasks.register('clean', Delete) {
 		group = 'dist'
 		description = 'Deletes the build directory.'
 		delete 'build'
@@ -148,9 +148,9 @@ project('edc-deploy') {
 		mustRunAfter clean
 	}
 	
-	task processResources(type: Copy) {
+	tasks.register('processResources', Copy) {
 		group = 'dist'
-		description = 'Deletes the build directory.'
+		description = 'Copies resources to the dist directory.'
 		from 'src/main/resources'
 		into 'build/dist/edc'
 		mustRunAfter clean
@@ -161,14 +161,20 @@ project('edc-deploy') {
 		dockerComposeFile 'build/dist/edc/docker-compose.yaml'
 	}
 	
-	dockerComposeUp {
-		dependsOn 
-	}
-	
-	task assembleDist() {
+	tasks.register('assembleDist') {
 		group = 'dist'
 		description = 'Assembles the project.'
 		dependsOn generateDockerCompose, processResources
+	}
+	
+	tasks.register('packageDist', Zip) {
+		group = 'dist'
+		description = 'Creates a zip package of the project.'
+		dependsOn assembleDist
+		archiveFileName = "edc-${project.version}.zip"
+		destinationDirectory = file('build/dist')
+		from file('build/dist/edc')
+		into 'edc'
 	}
 	
 	dockerComposeUp {
@@ -176,4 +182,29 @@ project('edc-deploy') {
 		dependsOn ':edc-backend:docker'
 		dependsOn ':edc-frontend:docker'
 	}
+}
+
+apply plugin: 'uk.me.eddies.lib.gradle.github.release'
+
+githubRelease {
+	owner = 'StevenEddies'
+	repo = 'edc'
+	token = project.findProperty('uk.me.eddies.github.token') ?: ''
+	tagName = "v${version}"
+	name = "Version ${version}"
+	prerelease = version =~ /dev/
+	draft = true
+	assets = [ "edc-deploy/build/dist/edc-${project.version}.zip" ]
+}
+
+tasks.named('githubRelease') {
+	dependsOn ':edc-deploy:packageDist'
+}
+
+tasks.register('release') {
+	group = 'dist'
+	description = 'Makes a full release via Docker Hub and Github.'
+	dependsOn ':edc-backend:dockerPush'
+	dependsOn ':edc-frontend:dockerPush'
+	dependsOn ':githubRelease'
 }
