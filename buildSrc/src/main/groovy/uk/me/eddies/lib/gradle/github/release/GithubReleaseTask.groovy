@@ -106,8 +106,11 @@ class GithubReleaseTask extends DefaultTask {
 
                     response.failure = { resp, json ->
                         logger.error "$json"
+                        throw new GradleScriptException("Failed to upload asset. Details: $json", null)
                     }
                 }
+            } else {
+                throw new GradleScriptException("Failed to upload asset $file as it does not exist.", null)
             }
         }
     }
