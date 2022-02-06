@@ -2,6 +2,8 @@
 
 Self-hosted web app to help you build good habits by doing things every day. Inspired by the [Every Day Calendar](https://www.simonegiertz.com/every-day-calendar).
 
+Please note this project is still in development. It's functional, but very rough around the edges.
+
 ![Screenshot of EDC](screenshot.png)
 
 
@@ -10,22 +12,20 @@ Self-hosted web app to help you build good habits by doing things every day. Ins
 
 ### Server Requirements
 
- * Java JDK (17+).
  * Docker engine (18.06.0+), CLI and compose (1.22.0+).
- * Git.
  * An OS capable of supporting the above (these instructions assume your server is linux based, but should be adaptable to others).
 
 
 ### Downloading
 
-Run `git clone https://github.com/StevenEddies/edc.git` from a terminal.
+Download the appropriate release "edc-xx.zip" from the [Releases](https://github.com/StevenEddies/edc/releases) page, and extract it into a suitable location on your server.
 
-You'd usually want to `cd edc` in order to run the steps below.
+This download is a zip file containing a Docker Compose file, and a folder which contains the configuration and data of the backend. The actual docker images will be downloaded on first run.
 
 
 ### Customisation
 
-Run `nano ./edc-deploy/src/main/resources/var/config.yaml` to edit the configuration file. It should look something like this:
+From a terminal within the extracted `edc` folder, run `nano var/config.yaml` to edit the configuration file. It should look something like this:
 
     ---
     users:
@@ -42,15 +42,17 @@ Run `nano ./edc-deploy/src/main/resources/var/config.yaml` to edit the configura
  * Note that it's YAML, so make sure you're using spaces rather than tabs.
  * User names should be lowercase alphanumeric only.
  * Password hashes should be bcrypt. Passwords should be at least 8 characters.
- * The datastore location above is part of the mounted docker volume. Assuming you haven't modified `docker-compose.yaml.template`, this will correspond to `./edc-deploy/build/dist/edc/var/data/` on the host system.
+ * The datastore location above is part of the mounted docker volume. Assuming you haven't modified `docker-compose.yaml`, this will correspond to `var/data/` within this `edc` folder on the host system.
+ 
+ You can also edit `docker-compose.yaml` if you know what you're doing.
 
 
 ### Running the Server
 
- * To start the server: `./gradlew  :edc-deploy:dockerComposeUp`
- * To stop the server: `./gradlew  :edc-deploy:dockerComposeDown`
+ * To start the server: `docker-compose up -d`
+ * To stop the server: `docker-compose down`
 
-TCP port 80 needs to be internet-accessible (or ideally, forwarded from a reverse proxy which handles HTTPS termination).
+TCP port 80 needs to be internet-accessible (or really, forwarded from a reverse proxy which handles HTTPS termination).
 
 
 
@@ -75,6 +77,7 @@ The backend is Java using the Dropwizard framework. The frontend is Typescript, 
  * Docker repositories:
     * Backend: https://hub.docker.com/repository/docker/steveneddies/edc-backend
     * Frontend: https://hub.docker.com/repository/docker/steveneddies/edc-frontend
+ * Releases: https://github.com/StevenEddies/edc/releases
 
 
 ### Building
