@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +23,7 @@ import { TodaySummaryCardComponent } from './components/today-summary-card/today
 import { AchievementCardComponent } from './components/achievement-card/achievement-card.component';
 import { StreakPageComponent } from './components/streak-page/streak-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { BasicAuthInterceptor } from './services/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MatToolbarModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
