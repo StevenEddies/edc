@@ -4,11 +4,12 @@ import { TodayPageComponent } from './components/today-page/today-page.component
 import { StreakPageComponent } from './components/streak-page/streak-page.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'today', component: TodayPageComponent },
-  { path: 'streak', component: StreakPageComponent },
-  { path: 'calendar', component: CalendarPageComponent },
+  { path: 'today', component: TodayPageComponent, canActivate: [AuthGuard] },
+  { path: 'streak', component: StreakPageComponent, canActivate: [AuthGuard] },
+  { path: 'calendar', component: CalendarPageComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: '', redirectTo: '/today', pathMatch: 'full' }
 ];

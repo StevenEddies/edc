@@ -10,6 +10,6 @@
     <mat-error *ngIf="loginForm.controls.password.invalid">Required, at least 8 characters</mat-error>
   </mat-form-field>
   <div class="button-panel">
-    <button mat-stroked-button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button mat-stroked-button type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
   </div>
 </form>

@@ -6,7 +6,8 @@
   
   <nav mat-tab-nav-bar
       backgroundColor="primary"
-      mat-align-tabs="center">
+      mat-align-tabs="center"
+      *ngIf="loggedIn()">
       
     <a mat-tab-link
         routerLink="/today"
@@ -28,7 +29,10 @@
     </a>
   </nav>
   
-  <button mat-button aria-label="Logout">
+  <button mat-button
+      aria-label="Logout"
+      (click)="logout()"
+      *ngIf="loggedIn()">
     <mat-icon svgIcon="logout"></mat-icon>
   </button>
   
