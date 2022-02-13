@@ -26,7 +26,7 @@ export class AuthService {
   
   login(user: User): void {
     this.user.next(user);
-    localStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.router.navigate(['/today']);
   }
   
