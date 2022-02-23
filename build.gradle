@@ -59,17 +59,13 @@ project(':edc-backend') {
 		files tasks.installDist.outputs
 		pull true
 	}
-	
-	dockerfileZip {
-		archiveFileName = 'edc-backend.zip'
-		destinationDirectory = file('build/docker-zip')
-	}
 }
 
 project(':edc-config-util') {
 
 	apply plugin: 'java'
 	apply plugin: 'application'
+	apply plugin: 'com.palantir.docker'
 	
 	sourceCompatibility = 17
 	targetCompatibility = 17
@@ -86,6 +82,14 @@ project(':edc-config-util') {
 
 	application {
 		mainClass = 'uk.me.eddies.apps.edc.configutil.application.EdcConfigUtil'
+	}
+	
+	docker {
+		name "steveneddies/edc-config-util:${version}"
+		tag minorVersion, "steveneddies/edc-config-util:${minorVersion}"
+		dockerfile file('src/main/docker/Dockerfile')
+		files tasks.installDist.outputs
+		pull true
 	}
 }
 
@@ -121,11 +125,6 @@ project('edc-frontend') {
 		}
 		files 'nginx/ng.conf'
 		pull true
-	}
-	
-	dockerfileZip {
-		archiveFileName = 'edc-frontend.zip'
-		destinationDirectory = file('build/docker-zip')
 	}
 }
 
