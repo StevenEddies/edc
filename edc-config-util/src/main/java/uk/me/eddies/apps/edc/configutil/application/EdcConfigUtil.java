@@ -10,8 +10,8 @@ public class EdcConfigUtil {
 	private static final Logger LOG = LoggerFactory.getLogger(EdcConfigUtil.class);
 
 	public static void main(String[] args) {
-		LOG.info("Beginning config utility.");
+		LOG.debug("Beginning config utility.");
 		new PasswordHasher().run();
-		LOG.info("Exiting config utility.");
+		LOG.debug("Exiting config utility.");
 	}
 }
