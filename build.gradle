@@ -59,6 +59,11 @@ project(':edc-backend') {
 		files tasks.installDist.outputs
 		pull true
 	}
+	
+	dockerfileZip {
+		archiveFileName = 'edc-backend.zip'
+		destinationDirectory = file('build/docker-zip')
+	}
 }
 
 project(':edc-config-util') {
@@ -90,6 +95,11 @@ project(':edc-config-util') {
 		dockerfile file('src/main/docker/Dockerfile')
 		files tasks.installDist.outputs
 		pull true
+	}
+	
+	dockerfileZip {
+		archiveFileName = 'edc-config-util.zip'
+		destinationDirectory = file('build/docker-zip')
 	}
 }
 
@@ -125,6 +135,11 @@ project('edc-frontend') {
 		}
 		files 'nginx/ng.conf'
 		pull true
+	}
+	
+	dockerfileZip {
+		archiveFileName = 'edc-frontend.zip'
+		destinationDirectory = file('build/docker-zip')
 	}
 }
 
