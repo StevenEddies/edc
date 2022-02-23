@@ -205,5 +205,6 @@ tasks.register('release') {
 	description = 'Makes a full release via Docker Hub and Github.'
 	dependsOn ':edc-backend:dockerPush'
 	dependsOn ':edc-frontend:dockerPush'
+	dependsOn ':edc-config-util:dockerPush'
 	dependsOn ':githubRelease'
 }
