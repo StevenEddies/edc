@@ -25,7 +25,7 @@ This download is a zip file containing a Docker Compose file, and a folder which
 
 ### Customisation
 
-From a terminal within the extracted `edc` folder, run `nano var/config.yaml` to edit the configuration file. It should look something like this:
+Edit `var/config.yaml` within the extracted `edc` folder (if using terminal, you can run `nano var/config.yaml` from that folder). It should look something like this:
 
     ---
     users:
@@ -41,13 +41,26 @@ From a terminal within the extracted `edc` folder, run `nano var/config.yaml` to
 
  * Note that it's YAML, so make sure you're using spaces rather than tabs.
  * User names should be lowercase alphanumeric only.
- * Password hashes should be bcrypt. Passwords should be at least 8 characters.
+ * Password hashes should be bcrypt, see below. Passwords should be at least 8 characters.
  * The datastore location above is part of the mounted docker volume. Assuming you haven't modified `docker-compose.yaml`, this will correspond to `var/data/` within this `edc` folder on the host system.
  
  You can also edit `docker-compose.yaml` if you know what you're doing.
 
+To generate bcrypt password hashes, run `docker run -it steveneddies/edc-config-util:<version>` and follow the interactive prompts. This generates a hash, but you will need to insert it into your `config.yaml` manually.
+
+
+### Upgrading
+
+ * Check the release's "Upgrading" section to determine whether any additional steps are required.
+ * Update `docker-compose.yaml`:
+    * If you are using the default version of the file, simply replace that one file with the corresponding version from the release you are upgrading to.
+    * Or if you have your own version of that file with custom changes, edit it to update the version tag on both docker images.
+ * Stop and start the server (see below).
+
 
 ### Running the Server
+
+From a terminal in your `edc` folder:
 
  * To start the server: `docker-compose up -d`
  * To stop the server: `docker-compose down`
@@ -105,6 +118,8 @@ To get started:
 
  * Release versions use the form *major*.*minor*.*build* and the SCM branch is named *major*.*minor*
  * Development versions use the form *major*.*minor*-dev.*build* and the SCM branch is named dev*major*.*minor*
+
+Additional upgrade steps may be needed when upgrading between release versions, if the *major* version changes, or rarely if the *minor* version changes. They may also be needed between any arbitrary development versions.
 
 
 
