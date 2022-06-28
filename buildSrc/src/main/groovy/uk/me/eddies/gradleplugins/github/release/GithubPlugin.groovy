@@ -1,6 +1,6 @@
 // Original version from Riiid! (https://github.com/riiid) and Anvith Bhat (https://github.com/humblerookie), used under Apache licence 2.0
 
-package uk.me.eddies.lib.gradle.github.release
+package uk.me.eddies.gradleplugins.github.release
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

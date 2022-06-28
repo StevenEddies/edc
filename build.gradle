@@ -198,7 +198,7 @@ project('edc-deploy') {
 	}
 }
 
-apply plugin: 'uk.me.eddies.lib.gradle.github.release'
+apply plugin: 'uk.me.eddies.gradleplugins.github-release'
 
 githubRelease {
 	owner = 'StevenEddies'
