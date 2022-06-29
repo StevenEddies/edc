@@ -1,3 +1,5 @@
+/* Copyright 2022, Steven Eddies. See the LICENCE file in the repository root. */
+
 package uk.me.eddies.apps.edc.backend.model;
 
 import static java.util.function.Function.identity;
@@ -7,10 +9,8 @@ import java.time.DateTimeException;
 import java.time.ZoneId;
 import java.util.Collection;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import uk.me.eddies.apps.edc.backend.configuration.GoalConfiguration;
 import uk.me.eddies.apps.edc.backend.configuration.UserConfiguration;
 

@@ -1,5 +1,5 @@
 plugins {
-    id 'groovy-gradle-plugin'
+	id 'groovy-gradle-plugin'
 }
 
 repositories {
@@ -7,16 +7,15 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
-    implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.7.2'
+	implementation 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+	implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.7.2'
 }
 
 gradlePlugin {
-    plugins {
-        githubPlugin {
-            id = 'uk.me.eddies.gradleplugins.github-release'
-            implementationClass = 'uk.me.eddies.gradleplugins.github.release.GithubPlugin'
-        }
-    }
+	plugins {
+		githubPlugin {
+			id = 'uk.me.eddies.gradleplugins.github-release'
+			implementationClass = 'uk.me.eddies.gradleplugins.github.release.GithubPlugin'
+		}
+	}
 }
-

@@ -1,27 +1,26 @@
 plugins {
-    id 'com.diffplug.spotless'
+	id 'com.diffplug.spotless'
 }
 
 def header = '/* Copyright $YEAR, Steven Eddies. See the LICENCE file in the repository root. */\n\n'
 
 spotless.groovyGradle {
-    importOrder()
-    indentWithTabs()
-    target '*.gradle', 'buildSrc/**/*.gradle'
+	importOrder()
+	indentWithTabs()
+	target '*.gradle', 'buildSrc/**/*.gradle'
 }
 pluginManager.withPlugin('groovy') {
-    spotless.groovy {
-        importOrder()
-        excludeJava()
-        licenseHeader header
-        indentWithTabs()
-    }
+	spotless.groovy {
+		importOrder()
+		excludeJava()
+		licenseHeader header
+		indentWithTabs()
+	}
 }
 pluginManager.withPlugin('java') {
-    spotless.java {
-        importOrder()
-        licenseHeader header
-        indentWithTabs()
-    }
+	spotless.java {
+		importOrder()
+		licenseHeader header
+		indentWithTabs()
+	}
 }
-

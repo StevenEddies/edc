@@ -1,3 +1,5 @@
+/* Copyright 2022, Steven Eddies. See the LICENCE file in the repository root. */
+
 package uk.me.eddies.apps.edc.backend.model;
 
 import static java.util.stream.Collectors.toList;
@@ -8,7 +10,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
 import uk.me.eddies.apps.edc.backend.api.model.AchievementDTO;
 import uk.me.eddies.apps.edc.backend.api.model.DayDTO;
 import uk.me.eddies.apps.edc.backend.api.model.DayStatus;
