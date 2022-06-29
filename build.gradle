@@ -5,6 +5,7 @@ plugins {
 }
 
 allprojects {
+    apply plugin: 'uk.me.eddies.apps.edc.gradleconvention.formatter'
 	version = project.findProperty('buildVersion') ?: '0.0-dev.0'
 	minorVersion = (version =~ /^(.*)\.\d+$/)[0][1]
 	group = 'uk.me.eddies'
@@ -145,17 +146,12 @@ project('edc-frontend') {
 
 project('edc-deploy') {
 
+    apply plugin: 'base'
 	apply plugin: 'com.palantir.docker-compose'
 	
 	dependencies {
 		docker project(path: ':edc-backend', configuration: 'docker')
 		docker project(path: ':edc-frontend', configuration: 'docker')
-	}
-	
-	tasks.register('clean', Delete) {
-		group = 'dist'
-		description = 'Deletes the build directory.'
-		delete 'build'
 	}
 	
 	generateDockerCompose {
