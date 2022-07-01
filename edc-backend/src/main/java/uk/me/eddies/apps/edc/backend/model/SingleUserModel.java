@@ -1,3 +1,5 @@
+/* Copyright 2022, Steven Eddies. See the LICENCE file in the repository root. */
+
 package uk.me.eddies.apps.edc.backend.model;
 
 import java.time.LocalDate;

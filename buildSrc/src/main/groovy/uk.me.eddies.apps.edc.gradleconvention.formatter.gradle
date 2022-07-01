@@ -5,13 +5,11 @@ plugins {
 def header = '/* Copyright $YEAR, Steven Eddies. See the LICENCE file in the repository root. */\n\n'
 
 spotless.groovyGradle {
-	importOrder()
 	indentWithTabs()
 	target '*.gradle', 'buildSrc/**/*.gradle', 'buildSrc/src/**/*.groovy'
 }
 pluginManager.withPlugin('groovy') {
 	spotless.groovy {
-		importOrder()
 		excludeJava()
 		licenseHeader header
 		indentWithTabs()
@@ -19,7 +17,6 @@ pluginManager.withPlugin('groovy') {
 }
 pluginManager.withPlugin('java') {
 	spotless.java {
-		importOrder()
 		licenseHeader header
 		indentWithTabs()
 	}
