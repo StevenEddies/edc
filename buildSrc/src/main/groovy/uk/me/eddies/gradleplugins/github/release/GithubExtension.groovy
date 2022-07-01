@@ -4,119 +4,119 @@ package uk.me.eddies.gradleplugins.github.release
 
 class GithubExtension {
 
-    String baseUrl = "https://api.github.com"
-    String acceptHeader = 'application/vnd.github.v3+json'
-    
-    String owner
-    String repo
-    String token
+	String baseUrl = "https://api.github.com"
+	String acceptHeader = 'application/vnd.github.v3+json'
+	
+	String owner
+	String repo
+	String token
 
-    String tagName
-    String name
-    String body
+	String tagName
+	String name
+	String body
 
-    boolean prerelease = false
-    boolean draft = false
+	boolean prerelease = false
+	boolean draft = false
 
-    String[] assets
+	String[] assets
 
-    String getBaseUrl() {
-        return baseUrl
-    }
+	String getBaseUrl() {
+		return baseUrl
+	}
 
-    String getAcceptHeader() {
-        return acceptHeader
-    }
+	String getAcceptHeader() {
+		return acceptHeader
+	}
 
-    String getOwner() {
-        return owner
-    }
+	String getOwner() {
+		return owner
+	}
 
-    String getRepo() {
-        return repo
-    }
+	String getRepo() {
+		return repo
+	}
 
-    String getToken() {
-        return token
-    }
+	String getToken() {
+		return token
+	}
 
-    String getTagName() {
-        return tagName
-    }
+	String getTagName() {
+		return tagName
+	}
 
-    String getName() {
-        return name
-    }
+	String getName() {
+		return name
+	}
 
-    String getBody() {
-        return body
-    }
+	String getBody() {
+		return body
+	}
 
-    boolean isPrerelease() {
-        return prerelease
-    }
+	boolean isPrerelease() {
+		return prerelease
+	}
 
-    boolean isDraft() {
-        return draft
-    }
+	boolean isDraft() {
+		return draft
+	}
 
-    String[] getAssets() {
-        return assets
-    }
+	String[] getAssets() {
+		return assets
+	}
 
-    void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl
-    }
+	void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl
+	}
 
-    void setAcceptHeader(String acceptHeader) {
-        this.acceptHeader = acceptHeader
-    }
+	void setAcceptHeader(String acceptHeader) {
+		this.acceptHeader = acceptHeader
+	}
 
-    void setOwner(String owner) {
-        if (owner == null) {
-            throw new IllegalArgumentException("owner")
-        }
+	void setOwner(String owner) {
+		if (owner == null) {
+			throw new IllegalArgumentException("owner")
+		}
 
-        this.owner = owner
-    }
+		this.owner = owner
+	}
 
-    void setRepo(String repo) {
-        if (repo == null) {
-            throw new IllegalArgumentException("repo")
-        }
+	void setRepo(String repo) {
+		if (repo == null) {
+			throw new IllegalArgumentException("repo")
+		}
 
-        this.repo = repo
-    }
+		this.repo = repo
+	}
 
-    void setToken(String token) {
-        if (token == null) {
-            throw new IllegalArgumentException("token")
-        }
+	void setToken(String token) {
+		if (token == null) {
+			throw new IllegalArgumentException("token")
+		}
 
-        this.token = token
-    }
+		this.token = token
+	}
 
-    void setTagName(String tagName) {
-        this.tagName = tagName
-    }
+	void setTagName(String tagName) {
+		this.tagName = tagName
+	}
 
-    void setName(String name) {
-        this.name = name
-    }
+	void setName(String name) {
+		this.name = name
+	}
 
-    void setBody(String body) {
-        this.body = body
-    }
+	void setBody(String body) {
+		this.body = body
+	}
 
-    void setAssets(String[] assets) {
-        this.assets = assets
-    }
+	void setAssets(String[] assets) {
+		this.assets = assets
+	}
 
-    void setPrerelease(boolean prerelease) {
-        this.prerelease = prerelease
-    }
+	void setPrerelease(boolean prerelease) {
+		this.prerelease = prerelease
+	}
 
-    void setDraft(boolean draft) {
-        this.draft = draft
-    }
+	void setDraft(boolean draft) {
+		this.draft = draft
+	}
 }
