@@ -9,6 +9,7 @@ repositories {
 dependencies {
 	implementation 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
 	implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.7.2'
+	implementation 'com.palantir.gradle.docker:gradle-docker:0.32.0'
 }
 
 gradlePlugin {
@@ -19,3 +20,4 @@ gradlePlugin {
 		}
 	}
 }
+

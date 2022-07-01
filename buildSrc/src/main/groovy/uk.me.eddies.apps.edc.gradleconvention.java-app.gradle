@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'application'
+	id 'com.palantir.docker'
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.slf4j:slf4j-api:1.7.32'
+	runtimeOnly 'ch.qos.logback:logback-classic:1.2.10'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+	testImplementation 'org.hamcrest:hamcrest:2.2'
+	testImplementation 'org.awaitility:awaitility:4.1.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+tasks.withType(Test) {
+	useJUnitPlatform()
+	ignoreFailures = true
+}
+	
+docker {
+	name "steveneddies/${project.name}:${version}"
+	tag minorVersion, "steveneddies/${project.name}:${minorVersion}"
+	dockerfile file('src/main/docker/Dockerfile')
+	files tasks.installDist.outputs
+	pull true
+}
+	
+dockerfileZip {
+	archiveFileName = "${project.name}.zip"
+	destinationDirectory = file('build/docker-zip')
+}
+
