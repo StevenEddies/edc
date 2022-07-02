@@ -1,0 +1,38 @@
+plugins {
+	id 'com.github.node-gradle.node'
+	id 'com.palantir.docker'
+}
+
+node {
+	version = '14.17.0'
+	npmVersion = '6.14.13'
+	download = true
+}
+
+tasks.register('angularBuild', NpxTask) {
+	group = 'angular'
+	description = 'Use the Angular CLI to build the web app.'
+	dependsOn npmInstall
+	command = 'ng'
+	args = [ 'build' ]
+	inputs.files 'package.json', 'package-lock.json', 'angular.json', 'tsconfig.json', 'tsconfig.app.json'
+	inputs.dir 'src'
+	inputs.dir fileTree('node_modules').exclude('.cache')
+	outputs.dir 'build/angular'
+}
+
+docker {
+	name "steveneddies/${project.name}:${version}"
+	tag minorVersion, "steveneddies/${project.name}:${minorVersion}"
+	dockerfile file('docker/Dockerfile')
+	copySpec.from (tasks.angularBuild.outputs) {
+		into 'app'
+	}
+	files 'nginx/ng.conf'
+	pull true
+}
+
+dockerfileZip {
+	archiveFileName = "${project.name}.zip"
+	destinationDirectory = file('build/docker-zip')
+}
